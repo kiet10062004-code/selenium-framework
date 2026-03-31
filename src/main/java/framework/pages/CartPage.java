@@ -3,7 +3,11 @@ package framework.pages;
 import framework.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,10 +27,16 @@ public class CartPage extends BasePage {
     }
 
     public CartPage removeFirstItem() {
-        List<org.openqa.selenium.WebElement> buttons = driver.findElements(removeBtn);
+        List<WebElement> buttons = driver.findElements(removeBtn);
+
         if (!buttons.isEmpty()) {
             buttons.get(0).click();
+
+            // ✅ WAIT sau khi remove để UI cập nhật
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.numberOfElementsToBe(cartItems, buttons.size() - 1));
         }
+
         return this;
     }
 
@@ -38,7 +48,7 @@ public class CartPage extends BasePage {
     public List<String> getItemNames() {
         return driver.findElements(itemNames)
                 .stream()
-                .map(e -> e.getText())
+                .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
 }
