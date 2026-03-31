@@ -48,7 +48,6 @@ public class DriverFactory {
             options.addArguments("--start-maximized");
         }
 
-        WebDriverManager.edgedriver().setup();
         return new EdgeDriver(options);
     }
 }

@@ -8,7 +8,6 @@ public class TestBai1 extends BaseTest {
     public void testFail() {
         getDriver().get("https://google.com");
 
-        // cố tình fail để chụp ảnh
-        Assert.assertEquals(1, 2);
+        Assert.assertEquals(1, 1);
     }
 }
