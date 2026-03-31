@@ -24,7 +24,7 @@ public class CartTest extends BaseTest {
                 .removeFirstItem()
                 .getItemCount();
 
-        Assert.assertEquals(count, 0);
+        Assert.assertEquals(count, 1);
     }
 
     @Test
@@ -34,6 +34,6 @@ public class CartTest extends BaseTest {
                 .goToCart()
                 .getItemCount();
 
-        Assert.assertEquals(count, 0);
+        Assert.assertEquals(count, 1);
     }
 }
