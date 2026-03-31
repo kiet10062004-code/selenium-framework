@@ -1,0 +1,78 @@
+package framework.base;
+
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class BaseTest {
+
+    private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    public WebDriver getDriver() {
+        return driver.get();
+    }
+
+    @Parameters({ "browser", "env" })
+    @BeforeMethod
+    public void setup(@Optional("chrome") String browser,
+            @Optional("dev") String env) {
+
+        WebDriver localDriver;
+
+        switch (browser.toLowerCase()) {
+            case "edge":
+                localDriver = new EdgeDriver();
+                break;
+            case "chrome":
+            default:
+                localDriver = new ChromeDriver();
+        }
+
+        driver.set(localDriver);
+        getDriver().manage().window().maximize();
+
+        if (env.equals("dev")) {
+            getDriver().get("http://localhost:8080");
+        } else {
+            getDriver().get("https://google.com");
+        }
+    }
+
+    @AfterMethod
+    public void teardown(ITestResult result) {
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+            takeScreenshot(result.getName());
+        }
+
+        if (getDriver() != null) {
+            getDriver().quit();
+            driver.remove();
+        }
+    }
+
+    private void takeScreenshot(String testName) {
+        TakesScreenshot ts = (TakesScreenshot) getDriver();
+        File src = ts.getScreenshotAs(OutputType.FILE);
+
+        String timestamp = LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+
+        String path = "target/screenshots/" + testName + "_" + timestamp + ".png";
+
+        try {
+            FileUtils.copyFile(src, new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
