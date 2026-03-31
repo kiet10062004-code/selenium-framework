@@ -31,11 +31,12 @@ public class BaseTest {
 
         driver.set(localDriver);
         getDriver().manage().window().maximize();
-
         if (env.equals("dev")) {
-            getDriver().get("http://localhost:8080");
-        } else {
-            getDriver().get("https://google.com");
+            if (System.getenv("CI") != null) {
+                getDriver().get("https://www.saucedemo.com/");
+            } else {
+                getDriver().get("http://localhost:8080");
+            }
         }
     }
 
