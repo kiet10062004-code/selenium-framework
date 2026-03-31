@@ -35,7 +35,7 @@ public class BaseTest {
             if (System.getenv("CI") != null) {
                 getDriver().get("https://www.saucedemo.com/");
             } else {
-                getDriver().get("http://localhost:8080");
+                getDriver().get("https://www.saucedemo.com/");
             }
         }
     }
