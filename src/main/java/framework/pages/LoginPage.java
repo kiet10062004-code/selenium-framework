@@ -1,21 +1,17 @@
 package framework.pages;
 
 import framework.base.BasePage;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
-    @FindBy(id = "user-name")
-    WebElement username;
-
-    @FindBy(id = "password")
-    WebElement password;
-
-    @FindBy(id = "login-button")
-    WebElement loginBtn;
-
+    private By username = By.id("user-name");
+    private By password = By.id("password");
+    private By loginBtn = By.id("login-button");
     @FindBy(css = "h3[data-test='error']")
     WebElement errorMsg;
 
@@ -37,8 +33,10 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    private By errorMessage = By.cssSelector("h3[data-test='error']");
+
     public String getErrorMessage() {
-        return getText(errorMsg);
+        return getText(errorMessage);
     }
 
     public boolean isErrorDisplayed() {

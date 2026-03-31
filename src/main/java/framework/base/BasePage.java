@@ -24,18 +24,18 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    protected void waitAndClick(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    protected void waitAndClick(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    protected void waitAndType(WebElement element, String text) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        element.clear();
-        element.sendKeys(text);
+    protected void waitAndType(By locator, String text) {
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        el.clear();
+        el.sendKeys(text);
     }
 
-    protected String getText(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element))
+    protected String getText(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator))
                 .getText()
                 .trim();
     }
@@ -62,8 +62,8 @@ public abstract class BasePage {
                 .equals("complete"));
     }
 
-    protected String getAttribute(WebElement element, String attr) {
-        return wait.until(ExpectedConditions.visibilityOf(element))
+    protected String getAttribute(By locator, String attr) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator))
                 .getAttribute(attr);
     }
 }

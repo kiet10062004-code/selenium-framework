@@ -1,45 +1,43 @@
 package framework.pages;
 
 import framework.base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class InventoryPage extends BasePage {
 
-    @FindBy(className = "inventory_list")
-    WebElement inventoryList;
-
-    @FindBy(className = "shopping_cart_badge")
-    WebElement cartBadge;
-
-    @FindBy(className = "inventory_item")
-    List<WebElement> items;
-
-    @FindBy(xpath = "//button[contains(text(),'Add to cart')]")
-    List<WebElement> addButtons;
+    private By inventoryList = By.className("inventory_list");
+    private By cartBadge = By.className("shopping_cart_badge");
+    private By items = By.className("inventory_item");
+    private By addButtons = By.xpath("//button[contains(text(),'Add to cart')]");
+    private By cartIcon = By.className("shopping_cart_link");
 
     public InventoryPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean isLoaded() {
-        return inventoryList.isDisplayed();
+        return isElementVisible(inventoryList);
     }
 
     public InventoryPage addFirstItemToCart() {
-        waitAndClick(addButtons.get(0));
+        List<WebElement> buttons = driver.findElements(addButtons);
+        if (!buttons.isEmpty()) {
+            buttons.get(0).click();
+        }
         return this;
     }
 
     public InventoryPage addItemByName(String name) {
-        for (WebElement item : items) {
+        List<WebElement> itemList = driver.findElements(items);
+
+        for (WebElement item : itemList) {
             if (item.getText().contains(name)) {
-                WebElement btn = item.findElement(
-                        org.openqa.selenium.By.tagName("button"));
-                waitAndClick(btn);
+                WebElement btn = item.findElement(By.tagName("button"));
+                btn.click();
                 break;
             }
         }
@@ -48,14 +46,15 @@ public class InventoryPage extends BasePage {
 
     public int getCartItemCount() {
         try {
-            return Integer.parseInt(cartBadge.getText());
+            return Integer.parseInt(
+                    driver.findElement(cartBadge).getText());
         } catch (Exception e) {
             return 0;
         }
     }
 
     public CartPage goToCart() {
-        cartBadge.click();
+        waitAndClick(cartIcon);
         return new CartPage(driver);
     }
 }

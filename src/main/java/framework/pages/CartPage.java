@@ -1,40 +1,31 @@
 package framework.pages;
 
 import framework.base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CartPage extends BasePage {
 
-    @FindBy(className = "cart_item")
-    List<WebElement> cartItems;
-
-    @FindBy(xpath = "//button[text()='Remove']")
-    List<WebElement> removeBtns;
-
-    @FindBy(id = "checkout")
-    WebElement checkoutBtn;
-
-    @FindBy(className = "inventory_item_name")
-    List<WebElement> itemNames;
+    private By cartItems = By.className("cart_item");
+    private By removeBtn = By.cssSelector("button.cart_button");
+    private By checkoutBtn = By.id("checkout");
+    private By itemNames = By.className("inventory_item_name");
 
     public CartPage(WebDriver driver) {
         super(driver);
     }
 
     public int getItemCount() {
-        if (cartItems == null || cartItems.isEmpty())
-            return 0;
-        return cartItems.size();
+        return driver.findElements(cartItems).size();
     }
 
     public CartPage removeFirstItem() {
-        if (!removeBtns.isEmpty()) {
-            waitAndClick(removeBtns.get(0));
+        List<org.openqa.selenium.WebElement> buttons = driver.findElements(removeBtn);
+        if (!buttons.isEmpty()) {
+            buttons.get(0).click();
         }
         return this;
     }
@@ -45,10 +36,9 @@ public class CartPage extends BasePage {
     }
 
     public List<String> getItemNames() {
-        List<String> names = new ArrayList<>();
-        for (WebElement e : itemNames) {
-            names.add(e.getText());
-        }
-        return names;
+        return driver.findElements(itemNames)
+                .stream()
+                .map(e -> e.getText())
+                .collect(Collectors.toList());
     }
 }
