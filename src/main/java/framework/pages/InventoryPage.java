@@ -4,7 +4,10 @@ import framework.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class InventoryPage extends BasePage {
@@ -25,9 +28,14 @@ public class InventoryPage extends BasePage {
 
     public InventoryPage addFirstItemToCart() {
         List<WebElement> buttons = driver.findElements(addButtons);
+
         if (!buttons.isEmpty()) {
             buttons.get(0).click();
         }
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(cartBadge, "1"));
+
         return this;
     }
 
