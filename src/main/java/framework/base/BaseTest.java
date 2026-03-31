@@ -1,12 +1,13 @@
 package framework.base;
 
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+
+import framework.factory.DriverFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,16 +27,7 @@ public class BaseTest {
     public void setup(@Optional("chrome") String browser,
             @Optional("dev") String env) {
 
-        WebDriver localDriver;
-
-        switch (browser.toLowerCase()) {
-            case "edge":
-                localDriver = new EdgeDriver();
-                break;
-            case "chrome":
-            default:
-                localDriver = new ChromeDriver();
-        }
+        WebDriver localDriver = DriverFactory.createDriver(browser);
 
         driver.set(localDriver);
         getDriver().manage().window().maximize();
