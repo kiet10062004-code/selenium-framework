@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        browser: [chrome, firefox]
+        browser: [chrome, edge]
       fail-fast: false
 
     steps:
