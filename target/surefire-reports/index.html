@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods,   3 passed</span>
+                    <span class="method-stats">7 methods,   7 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,6 +101,16 @@
                       <a href="#" panel-name="suite-Surefire_suite" class="show-methods passed suite-Surefire_suite"> (show)</a> <!-- show-methods passed suite-Surefire_suite -->
                     </span>
                     <div class="method-list-content passed suite-Surefire_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="CartTest" class="method navigator-link" hash-for-method="addItemToCart">addItemToCart</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="CartTest" class="method navigator-link" hash-for-method="cartEmpty">cartEmpty</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Surefire_suite" title="LoginTest" class="method navigator-link" hash-for-method="loginErrorMessage">loginErrorMessage</a> <!-- method navigator-link -->
@@ -116,6 +126,16 @@
                         <a href="#" panel-name="suite-Surefire_suite" title="LoginTest" class="method navigator-link" hash-for-method="loginSuccess">loginSuccess</a> <!-- method navigator-link -->
                       </span>
                       <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="CartTest" class="method navigator-link" hash-for-method="removeItem">removeItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="TestBai1" class="method navigator-link" hash-for-method="testFail">testFail</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                     </div> <!-- method-list-content passed suite-Surefire_suite -->
                   </li>
                 </ul>
@@ -128,6 +148,21 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Surefire_suite" class="panel Surefire_suite">
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestBai1</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="testFail">
+                  </a> <!-- testFail -->
+                  <span class="method-name">testFail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
           <div class="suite-Surefire_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -157,6 +192,35 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Surefire_suite-class-passed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">CartTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="addItemToCart">
+                  </a> <!-- addItemToCart -->
+                  <span class="method-name">addItemToCart</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="cartEmpty">
+                  </a> <!-- cartEmpty -->
+                  <span class="method-name">cartEmpty</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="removeItem">
+                  </a> <!-- removeItem -->
+                  <span class="method-name">removeItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-passed -->
         </div> <!-- panel Surefire_suite -->
         <div panel-name="test-xml-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -168,7 +232,9 @@
 &lt;suite name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
+      &lt;class name=&quot;CartTest&quot;/&gt;
       &lt;class name=&quot;LoginTest&quot;/&gt;
+      &lt;class name=&quot;TestBai1&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Surefire test --&gt;
 &lt;/suite&gt; &lt;!-- Surefire suite --&gt;
@@ -182,7 +248,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Surefire test (1 class)</span>
+                <span class="test-name">Surefire test (3 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -208,24 +274,40 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(7);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'loginSuccess')
-data.setCell(0, 2, 'LoginTest')
-data.setCell(0, 3, 439);
+data.setCell(0, 1, 'testFail')
+data.setCell(0, 2, 'TestBai1')
+data.setCell(0, 3, 978);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'loginFail')
-data.setCell(1, 2, 'LoginTest')
-data.setCell(1, 3, 415);
+data.setCell(1, 1, 'cartEmpty')
+data.setCell(1, 2, 'CartTest')
+data.setCell(1, 3, 799);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'loginErrorMessage')
-data.setCell(2, 2, 'LoginTest')
-data.setCell(2, 3, 412);
+data.setCell(2, 1, 'addItemToCart')
+data.setCell(2, 2, 'CartTest')
+data.setCell(2, 3, 734);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'removeItem')
+data.setCell(3, 2, 'CartTest')
+data.setCell(3, 3, 719);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'loginSuccess')
+data.setCell(4, 2, 'LoginTest')
+data.setCell(4, 3, 500);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'loginErrorMessage')
+data.setCell(5, 2, 'LoginTest')
+data.setCell(5, 3, 476);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'loginFail')
+data.setCell(6, 2, 'LoginTest')
+data.setCell(6, 3, 338);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 seconds</span>
+              <span class="suite-total-time">Total running time: 4 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -251,42 +333,96 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">LoginTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">CartTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setup(chrome, dev)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
+                <span class="method-name">addItemToCart</span>
+                <span class="method-start">2972 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown([TestResult name=addItemToCart status=SUCCESS method=CartTest.addItemToCart()[pri:0, instance:CartTe...)</span>
+                <span class="method-start">3707 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome, dev)</span>
+                <span class="method-start">3884 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">cartEmpty</span>
+                <span class="method-start">5264 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown([TestResult name=cartEmpty status=SUCCESS method=CartTest.cartEmpty()[pri:0, instance:CartTest@48fa0...)</span>
+                <span class="method-start">6064 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome, dev)</span>
+                <span class="method-start">6239 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">removeItem</span>
+                <span class="method-start">7499 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown([TestResult name=removeItem status=SUCCESS method=CartTest.removeItem()[pri:0, instance:CartTest@48f...)</span>
+                <span class="method-start">8218 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">LoginTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome, dev)</span>
+                <span class="method-start">8369 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
                 <span class="method-name">loginErrorMessage</span>
-                <span class="method-start">4127 ms</span>
+                <span class="method-start">9774 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown([TestResult name=loginErrorMessage status=SUCCESS method=LoginTest.loginErrorMessage()[pri:0, instan...)</span>
-                <span class="method-start">4541 ms</span>
+                <span class="method-start">10251 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup(chrome, dev)</span>
-                <span class="method-start">4687 ms</span>
+                <span class="method-start">10427 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">loginFail</span>
-                <span class="method-start">5956 ms</span>
+                <span class="method-start">11700 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">teardown([TestResult name=loginFail status=SUCCESS method=LoginTest.loginFail()[pri:0, instance:LoginTest@1ff...)</span>
-                <span class="method-start">6372 ms</span>
+                <span class="method-name">teardown([TestResult name=loginFail status=SUCCESS method=LoginTest.loginFail()[pri:0, instance:LoginTest@350...)</span>
+                <span class="method-start">12040 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup(chrome, dev)</span>
-                <span class="method-start">6533 ms</span>
+                <span class="method-start">12176 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">loginSuccess</span>
-                <span class="method-start">7824 ms</span>
+                <span class="method-start">13837 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">teardown([TestResult name=loginSuccess status=SUCCESS method=LoginTest.loginSuccess()[pri:0, instance:LoginTe...)</span>
-                <span class="method-start">8264 ms</span>
+                <span class="method-start">14338 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">TestBai1</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(chrome, dev)</span>
+                <span class="method-start">14493 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testFail</span>
+                <span class="method-start">15786 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">teardown([TestResult name=testFail status=SUCCESS method=TestBai1.testFail()[pri:0, instance:TestBai1@49b0b76...)</span>
+                <span class="method-start">16764 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
